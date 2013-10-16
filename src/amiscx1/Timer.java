@@ -8,12 +8,11 @@ package amiscx1;
  *
  * @author Rapier
  */
-public class Timer extends EventObject {
-    
+public class Timer implements EventInterface {
+    EventScheduler scheduler = EventScheduler.getInstance();
     
     @Override
     public void processEvent(Event event){
-        //cast?
        TimerEvent tEvent = (TimerEvent)event;
        
        if(tEvent.permament == true){

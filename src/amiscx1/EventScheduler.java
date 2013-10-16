@@ -68,7 +68,7 @@ public class EventScheduler{
          event.absoluteTime=simTime+event.relativeTime;
          eventList.add(event);
          
-         
+         System.out.println("Event added");
      }
      
      
