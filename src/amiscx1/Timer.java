@@ -4,6 +4,8 @@
  */
 package amiscx1;
 
+import java.util.Collections;
+
 /**
  *
  * @author Rapier
@@ -13,16 +15,16 @@ public class Timer implements EventInterface {
     
     @Override
     public void processEvent(Event event){
-       TimerEvent tEvent = (TimerEvent)event;
+       TimerEvent tEvent = (TimerEvent)event; // Typecast 
        
        if(tEvent.permament == true){
-           this.generateTimer(tEvent.relativeTime, true, tEvent.timerID);
+           this.generateTimer(tEvent.relativeTime, true, tEvent.timerID); // Timer Event Relative Zeit, Permanent, timerID
        }
        
-        if(scheduler.getTime2() > 2000){
-            scheduler.stopEventScheduler();
+        if(scheduler.getTime2() > scheduler.simEnd){ // Wenn SimTime als Int größer als SimEnde
+            scheduler.stopEventScheduler(); // StopEventScheduler
         }
-        System.out.println(scheduler.getTime() +" Timer.processEvent aufgerufen " +tEvent.timerID ); 
+        System.out.println(scheduler.getTime() +" Timer.processEvent aufgerufen " +tEvent.timerID ); // Ausgabe
     }
     
     
@@ -34,6 +36,7 @@ public class Timer implements EventInterface {
     event.timerID = timerID;
     event.source = this; 
     scheduler.addEvent(event);
+    
     }
     
 }

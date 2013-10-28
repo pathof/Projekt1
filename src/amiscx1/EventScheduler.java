@@ -6,12 +6,13 @@ import java.util.*;
  */
 public class EventScheduler{
     
-     List<Event> eventList = new LinkedList();
-     long  simTime = 0;
-     final int SAMPLING_RATE=0;
+     List<Event> eventList = new LinkedList(); //  neue verkettete Liste
+     long  simTime = 0; // Simulationszeit
+     final int SAMPLING_RATE=0; // Abtastrate 
      boolean running = false;
-    
-     private static EventScheduler instance = new EventScheduler();
+      Comparator<Event> comp = new EventSort(); // Nötig für Listenelement-Sortierung
+     private static EventScheduler instance = new EventScheduler(); // Singleton Eventscheduler - 1 Objekt
+     final long simEnd = 50000; //Konstante für das Simulationsende
     
     private EventScheduler(){
      /**
@@ -30,29 +31,27 @@ public class EventScheduler{
     
      
     
-     public void ausgabe(){
-     System.out.println("Haaaaaaaaaaaaaaaaallllllllooooooo");
-     Event X = new Event();  
+
      
+    
      
-       
-             
-             }
-     
-     public String getTime(){return " " +simTime;}
-     public long getTime2(){return simTime;} 
-     public void startEventScheduler(){
+     public String getTime(){return " " +simTime;} // Simulationszeit als String
+     public long getTime2(){return simTime;} // Simulationszeit als long int
+     public void startEventScheduler(){ // Methode Sart
          
          running = true;
          
          while (running){
-         Event event = eventList.get(0);
-         simTime = event.absoluteTime;
-         event.source.processEvent(event);
-         eventList.remove(0);
+             
+         Event event = eventList.get(0); // Erzeugt Objekt Typ Event verweis auf eventList Posi 1
+         simTime = event.absoluteTime; // simulatonszeit = absolute Zeit vom Event
+         event.source.processEvent(event); // Auslösen ProzessEvent
+         eventList.remove(0); // Entfernt Event
+         
+     
          }
      
-     // sortieren nebensächlich ... machen wir später
+     
          
          
          eventList.get(0);
@@ -64,12 +63,29 @@ public class EventScheduler{
          running = false;
      }
      
-     public void addEvent(Event event){     
-         event.absoluteTime=simTime+event.relativeTime;
-         eventList.add(event);
+     public void addEvent(Event event){     //  Hinzufügen neues Event
+         event.absoluteTime=simTime+event.relativeTime; 
+         eventList.add(event); // in die Liste einfügen / anhängen
+     Collections.sort(eventList, comp); // Sortieren 
          
-         System.out.println("Event added");
+         
+         System.out.println("Event added" + event.absoluteTime); // Ausgabe Text + AbsoluteZeit
+         
+        
      }
+     
+     
+
+
+     
+     
+     
+     
+     
+     
+     
+     
+     
      
      
      }

@@ -9,10 +9,32 @@ package amiscx1;
  */
 public class Event {
     
-    long relativeTime;
-    long absoluteTime;
+    long relativeTime; // Relative Zeit - Wann wird das Event ausgelöst
+    long absoluteTime; // Absolute Zeit - 
     EventInterface source;
     int eventType;
         
     
+ 
+     
+     
+     
 }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

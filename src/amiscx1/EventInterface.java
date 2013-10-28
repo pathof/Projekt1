@@ -11,5 +11,5 @@ package amiscx1;
  * @author gerd.bumiller
  */
 public interface EventInterface {
-    public void processEvent(Event event);
+    public void processEvent(Event event); // Schnittstelle für alle Klassen die auf EventScheduler zugreifen
 }

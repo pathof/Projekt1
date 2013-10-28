@@ -13,4 +13,20 @@ package amiscx1;
  */
 public class Packet {
     
+ int txMode;
+ char[] controlfield;
+ int cin;
+ int nin;
+ int linkAdress;
+ int dataLength;
+ int fxNumber;
+ int fxChar;
+ String macData;
+ 
+
+ 
+    public long duration() { return (1000);
+        
+        
+    }
 }
